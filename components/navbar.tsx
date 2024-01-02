@@ -8,7 +8,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 
 import { link as linkStyles } from "@nextui-org/theme";
@@ -41,9 +41,7 @@ import { Logo } from "@/components/icons";
 import { SearchPopup } from "./searchs/searchPopup";
 
 export const Navbar = () => {
-  const searchInput = (
-    <SearchPopup  />
-  );
+  const searchInput = <SearchPopup />;
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -57,7 +55,10 @@ export const Navbar = () => {
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
-              <NextLink
+              <Link href={item.href} underline="focus" color="foreground">
+                {item.label}
+              </Link>
+              {/* <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
@@ -66,7 +67,7 @@ export const Navbar = () => {
                 href={item.href}
               >
                 {item.label}
-              </NextLink>
+              </NextLink> */}
             </NavbarItem>
           ))}
         </ul>
@@ -89,7 +90,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
+        {/* <NavbarItem className="hidden sm:flex">
           <Dropdown placement="bottom-start">
             <DropdownTrigger>
               <User
@@ -122,7 +123,7 @@ export const Navbar = () => {
             </DropdownMenu>
           </Dropdown>
 								
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

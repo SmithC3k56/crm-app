@@ -14,6 +14,17 @@ import { productMachine } from "./productmachine";
 import { ProductItem } from "@/components/products/productItem";
 import { BigProductItem } from "@/components/products/bigProductItem";
 
+
+// // This gets called on every request
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await fetch(`https://.../data`)
+//   const data = await res.json()
+ 
+//   // Pass data to the page via props
+//   return { props: { data } }
+// }
+
 export default function ProductsPage() {
   const [state, send] = useMachine(productMachine);
   // const [list, setList] = React.useState([]);
